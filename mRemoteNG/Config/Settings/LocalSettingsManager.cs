@@ -384,7 +384,11 @@ public void EncryptDatabase()
                 {
                     foreach (var disk in searcher.Get())
                     {
-                        return disk["SerialNumber"].ToString().Trim();
+                        var sn = Convert.ToString(disk["SerialNumber"]);
+                        if (!string.IsNullOrEmpty(sn))
+                        {
+                            return sn.Trim();
+                        }
                     }
                 }
             }
